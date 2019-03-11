@@ -1,12 +1,13 @@
 #include "Topic1.h"
 #include "Topic2.h"
 #include "Topic3.h"
+#include "Topic4.h"
 
 using namespace std;
 
 int main() {
 	bool isDone = false;
-	int choice;
+	short choice;
 
 	while (!isDone) {
 		cin.clear();
@@ -35,6 +36,10 @@ int main() {
 			case 3:
 				Topic3 obj3;
 				obj3.selectExercise();
+				break;
+			case 4:
+				Topic4 obj4;
+				obj4.selectExercise();
 				break;
 		}
 	}

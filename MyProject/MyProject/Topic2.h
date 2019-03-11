@@ -10,7 +10,7 @@ class Topic2 {
 public:
 	void selectExercise();
 private:
-	int exercise;
+	short exercise;
 
 	void betterLinEqSys();
 	void testTriangle();
