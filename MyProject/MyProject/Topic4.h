@@ -11,4 +11,7 @@ private:
 
 	bool isHydroxide(char compound[]); // C string version
 	bool isHydroxide(string compound); // C++ string version
+	bool sequenceSearch(string s, int nc, char c);
+	void testSequenceSearch();
+	void decompose(string compound);
 };
