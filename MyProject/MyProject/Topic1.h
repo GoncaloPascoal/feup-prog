@@ -1,12 +1,5 @@
 #pragma once
 
-#include <iostream>
-#include <iomanip>
-#include <ctime>
-#include <math.h>
-
-using namespace std;
-
 class Topic1 {
 public:
 	void selectExercise();

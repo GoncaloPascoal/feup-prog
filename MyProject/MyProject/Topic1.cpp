@@ -1,4 +1,10 @@
 #include "Topic1.h"
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+#include <math.h>
+
+using namespace std;
 
 void testOperations() {
 	// variable declarations and initialization
