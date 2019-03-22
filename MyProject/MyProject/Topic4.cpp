@@ -1,6 +1,7 @@
 #include "Topic4.h"
 #include <iostream>
 #include <algorithm>
+#include <fstream>
 
 void Topic4::selectExercise() {
 	cout << "Enter exercise number: ";
@@ -53,6 +54,19 @@ void Topic4::selectExercise() {
 			break;
 		case 6:
 			testIntArray();
+			break;
+		case 8:
+			testBubbleSort();
+			break;
+		case 9:
+			testBinarySearch();
+			break;
+		case 12:
+			testExecuteOperation();
+			break;
+		case 13:
+			sortNamesInFile();
+			break;
 	}
 }
 
@@ -319,4 +333,155 @@ void Topic4::testIntArray() {
 		}
 		cout << endl;
 	}
+}
+
+template <typename T> void Topic4::bubbleSort(vector<T> &v) {
+	T temp;
+
+	for (int i = v.size() - 1; i > 0; i--) {
+		for (int j = 0; j < i; j++) {
+			if (v[j] > v[j + 1]) {
+				temp = v[j];
+				v[j] = v[j + 1];
+				v[j + 1] = temp;
+			}
+		}
+	}
+}
+
+/*
+void Topic4::bubbleSort(vector<string> &v) {
+	string temp;
+
+	for (int i = v.size() - 1; i > 0; i--) {
+		for (int j = 0; j < i; j++) {
+			if (v[j] > v[j + 1]) {
+				temp = v[j];
+				v[j] = v[j + 1];
+				v[j + 1] = temp;
+			}
+		}
+	}
+}
+*/
+
+void Topic4::testBubbleSort() {
+	vector<string> vec;
+	size_t size;
+
+	cout << "Size of vector to sort: ";
+	cin >> size;
+	vec.resize(size);
+
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	for (size_t i = 0; i < size; i++) {
+		cout << "Element #" << i << ": ";
+		getline(cin, vec[i]);
+	}
+
+	bubbleSort(vec);
+	
+	for (string name : vec) {
+		cout << name << " ";
+	}
+	cout << endl;
+}
+
+int Topic4::binarySearch(const vector<string> &v, string value) {
+	int bottom = 0, top = v.size() - 1, middle;
+	bool found = false;
+	
+	while (bottom <= top && !found) {
+		middle = (top + bottom) / 2;
+		if (v[middle] == value)
+			found = true;
+		else {
+			if (v[middle] < value)
+				bottom = middle + 1;
+			else
+				top = middle - 1;
+		}
+	}
+
+	if (found)
+		return middle;
+	else
+		return -1;
+}
+
+void Topic4::testBinarySearch() {
+	vector<string> vec = { "Charles", "David", "Mary", "Nora", "Patrick", "Rachel", "Sharon" };
+	string name = "Nathan";
+
+	cout << "Binary search (" << name << "): " << binarySearch(vec, name) << endl;
+}
+
+double Topic4::executeOperation(string op) {
+	double a, b;
+	char c;
+
+	for (int i = 0; i < op.length(); i++) {
+		c = op[i];
+		if (c == '+' || c == '-' || c == '*' || c == '/') {
+			a = stod(op.substr(0, i));
+			b = stod(op.substr(i + 1));
+			break;
+		}
+	}
+
+	switch (c) {
+		case '+':
+			return a + b;
+		case '-':
+			return a - b;
+		case '*':
+			return a * b;
+		case '/':
+			return a / b;
+	}
+}
+
+void Topic4::testExecuteOperation() {
+	string op;
+
+	cout << "Enter an operation (A op B): ";
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	getline(cin, op);
+	cout << op << " = " << executeOperation(op) << endl;
+}
+
+void Topic4::sortNamesInFile() {
+	string fileName, fileNameSorted, name;
+	ifstream fr;
+	ofstream fw;
+	vector<string> names;
+
+	cout << "Enter filename (example.txt): ";
+	cin >> fileName;
+
+	fileNameSorted = fileName.substr(0, fileName.length() - 4) + "_sorted.txt";
+
+	fr.open(fileName);
+	
+	if (!fr.is_open()) {
+		cerr << "File " << fileName << " not found.\n";
+		return;
+	}
+
+	while (!fr.eof()) {
+		getline(fr, name);
+		names.push_back(name);
+	}
+
+	fr.close();
+
+	bubbleSort(names);
+
+	fw.open(fileNameSorted);
+	for (size_t i = 0; i < names.size(); i++) {
+		fw << names[i];
+		if (i < names.size() - 1)
+			fw << endl;
+	}
+	fw.close();
 }

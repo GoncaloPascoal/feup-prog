@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -32,4 +33,16 @@ private:
 	void readIntArray(int a[], size_t nElem);
 	size_t searchValueInIntArray(const int a[], size_t nElem, int value, int index[]);
 	void testIntArray();
+	
+	template <typename T> void bubbleSort(vector<T> &v);
+	//void bubbleSort(vector<string> &v);
+	void testBubbleSort();
+
+	int binarySearch(const vector<string> &v, string value);
+	void testBinarySearch();
+
+	double executeOperation(string op);
+	void testExecuteOperation();
+
+	void sortNamesInFile();
 };
