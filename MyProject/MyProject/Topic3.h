@@ -6,6 +6,9 @@ public:
 private:
 	short exercise;
 
+	double round(double x, unsigned n);
+	void testRound();
+
 	bool readFrac(int &numerator, int &denominator);
 	void writeFrac(int numerator, int denominator);
 	void reduceFrac(int &numerator, int &denominator);

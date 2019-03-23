@@ -5,11 +5,18 @@
 using namespace std;
 
 void Topic3::selectExercise() {
+	int num, den, num2, den2, numr, denr;
 	cout << "Enter exercise number: ";
 	cin >> exercise;
 
 	switch (exercise) {
+		case 4:
+			testRound();
+			break;
 		case 5:
+			readFrac(num, den);
+			reduceFrac(num, den);
+			writeFrac(num, den);
 			break;
 		case 7:
 			cout << "Max long: " << LONG_MAX << endl;
@@ -20,23 +27,22 @@ void Topic3::selectExercise() {
 			testIntegration();
 			break;
 	}
+}
 
-	int num, den, num2, den2, numr, denr;
+double Topic3::round(double x, unsigned n) {
+	return floor(x * pow(10, n) + 0.5) / pow(10, n);
+}
 
-	/*
-	num1 = 1;
-	den1 = 2;
+void Topic3::testRound() {
+	double num;
+	unsigned decPlaces;
+	
+	cout << "Real number: ";
+	cin >> num;
+	cout << "Number of decimal places to round to: ";
+	cin >> decPlaces;
 
-	num2 = 0;
-	den2 = 10;
-
-	addFrac(num1, den1, num2, den2, numr, denr);
-	writeFrac(numr, denr);
-	*/
-
-	readFrac(num, den);
-	reduceFrac(num, den);
-	writeFrac(num, den);
+	cout << "Rounded to " << decPlaces << " dec. places: " << round(num, decPlaces) << endl;
 }
 
 bool Topic3::readFrac(int &numerator, int &denominator) {
