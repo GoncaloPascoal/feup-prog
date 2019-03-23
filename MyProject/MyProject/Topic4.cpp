@@ -7,6 +7,7 @@ void Topic4::selectExercise() {
 	cout << "Enter exercise number: ";
 	cin >> exercise;
 
+	vector<int> foo = { 120, 12, 12, 2, 20, 229, 21, 12, 2, 220, 120, 129 };
 	string compound, name;
 	Fraction f1, f2;
 
@@ -60,6 +61,13 @@ void Topic4::selectExercise() {
 			break;
 		case 9:
 			testBinarySearch();
+			break;
+		case 10:
+			removeDuplicates(foo);
+			for (int x : foo) {
+				cout << x << " ";
+			}
+			cout << endl;
 			break;
 		case 12:
 			testExecuteOperation();
@@ -349,22 +357,6 @@ template <typename T> void Topic4::bubbleSort(vector<T> &v) {
 	}
 }
 
-/*
-void Topic4::bubbleSort(vector<string> &v) {
-	string temp;
-
-	for (int i = v.size() - 1; i > 0; i--) {
-		for (int j = 0; j < i; j++) {
-			if (v[j] > v[j + 1]) {
-				temp = v[j];
-				v[j] = v[j + 1];
-				v[j + 1] = temp;
-			}
-		}
-	}
-}
-*/
-
 void Topic4::testBubbleSort() {
 	vector<string> vec;
 	size_t size;
@@ -414,6 +406,30 @@ void Topic4::testBinarySearch() {
 	string name = "Nathan";
 
 	cout << "Binary search (" << name << "): " << binarySearch(vec, name) << endl;
+}
+
+void Topic4::removeDuplicates(vector<int> &v) {
+	bool done = false;
+	size_t idx = 0;
+	size_t duplicates = 0;
+
+	while (!done) {
+		for (size_t i = idx + 1; i < v.size(); i++) {
+			if (v[i] == v[idx]) {
+				for (size_t j = i + 1; j < v.size(); j++) {
+					v[j - 1] = v[j];
+				}
+				duplicates++;
+			}
+		}
+		v.resize(v.size() - duplicates);
+		
+		duplicates = 0;
+		idx++;
+
+		if (idx >= v.size())
+			done = true;
+	}
 }
 
 double Topic4::executeOperation(string op) {

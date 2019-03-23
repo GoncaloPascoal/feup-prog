@@ -35,11 +35,14 @@ private:
 	void testIntArray();
 	
 	template <typename T> void bubbleSort(vector<T> &v);
-	//void bubbleSort(vector<string> &v);
 	void testBubbleSort();
 
 	int binarySearch(const vector<string> &v, string value);
 	void testBinarySearch();
+
+	void removeDuplicates(vector<int> &v);
+	vector<int> vectorUnion(const vector<int> &v1, const vector<int> &v2);
+	vector<int> vectorIntersection(const vector<int> &v1, const vector<int> &v2);
 
 	double executeOperation(string op);
 	void testExecuteOperation();
