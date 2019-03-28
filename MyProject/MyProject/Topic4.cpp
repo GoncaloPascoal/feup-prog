@@ -145,27 +145,11 @@ string Topic4::normalizeName(string name) {
 	}
 
 	// Erase spaces at the beginning
-	for (size_t i = 0; i < name.length(); i++) {
-		if (name[i] == ' ')
-			spaceCount++;
-		else
-			break;
-	}
-
-	name.erase(0, spaceCount);
-	spaceCount = 0;
+	name.erase(0, name.find_first_not_of(" "));
 	
 	// Erase spaces at the end
-	for (int i = name.length() - 1; i >= 0; i--) {
-		if (name[i] == ' ')
-			spaceCount++;
-		else
-			break;
-	}
-
-	if (spaceCount != 0)
-		name.erase(name.length() - spaceCount, spaceCount);
-
+	name.erase(name.find_last_not_of(" ") + 1);
+	
 	// Replace multiple spaces with one
 	while (name.find("  ") != -1) {
 		name.replace(name.find("  "), 2, " ");
@@ -436,7 +420,7 @@ double Topic4::executeOperation(string op) {
 	double a, b;
 	char c;
 
-	for (int i = 0; i < op.length(); i++) {
+	for (int i = 1; i < op.length(); i++) {
 		c = op[i];
 		if (c == '+' || c == '-' || c == '*' || c == '/') {
 			a = stod(op.substr(0, i));
