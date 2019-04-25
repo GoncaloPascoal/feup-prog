@@ -416,6 +416,20 @@ void Topic4::removeDuplicates(vector<int> &v) {
 	}
 }
 
+vector<int> Topic4::vectorUnion(const vector<int> &v1, const vector<int> &v2) {
+	vector<int> result;
+
+	return result;
+}
+
+vector<int> Topic4::vectorIntersection(const vector<int> &v1, const vector<int> &v2) {
+	vector<int> result;
+	
+	
+
+	return result;
+}
+
 double Topic4::executeOperation(string op) {
 	double a, b;
 	char c;

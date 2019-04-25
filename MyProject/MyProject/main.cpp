@@ -2,6 +2,7 @@
 #include "Topic2.h"
 #include "Topic3.h"
 #include "Topic4.h"
+#include "Utils.h"
 
 using namespace std;
 
