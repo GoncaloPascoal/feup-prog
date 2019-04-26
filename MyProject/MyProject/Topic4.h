@@ -34,7 +34,6 @@ private:
 	size_t searchValueInIntArray(const int a[], size_t nElem, int value, int index[]);
 	void testIntArray();
 	
-	template <typename T> void bubbleSort(vector<T> &v);
 	void testBubbleSort();
 
 	int binarySearch(const vector<string> &v, string value);

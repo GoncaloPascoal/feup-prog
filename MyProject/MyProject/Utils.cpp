@@ -17,7 +17,7 @@ template <typename T> int partition(vector<T> &v, int start, int end) {
 	return i - 1;
 }
 
-template <typename T> void Utils::quickSort(vector<T> &v, int start, int end) {
+template <typename T> void utils::quickSort(vector<T> &v, int start, int end) {
 	if (start < end) {
 		int pivotPos = partition(v, start, end);
 		quickSort(v, start, pivotPos - 1);
@@ -26,8 +26,8 @@ template <typename T> void Utils::quickSort(vector<T> &v, int start, int end) {
 }
 
 // Explicit instantiation
-template void Utils::quickSort<int>(vector<int> &v, int start, int end);
-template void Utils::quickSort<long>(vector<long> &v, int start, int end);
-template void Utils::quickSort<float>(vector<float> &v, int start, int end);
-template void Utils::quickSort<double>(vector<double> &v, int start, int end);
-template void Utils::quickSort<string>(vector<string> &v, int start, int end);
+template void utils::quickSort<int>(vector<int> &v, int start, int end);
+template void utils::quickSort<long>(vector<long> &v, int start, int end);
+template void utils::quickSort<float>(vector<float> &v, int start, int end);
+template void utils::quickSort<double>(vector<double> &v, int start, int end);
+template void utils::quickSort<string>(vector<string> &v, int start, int end);
