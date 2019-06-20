@@ -87,9 +87,14 @@ int main() {
 	
 	Ship s(id, symbol, pos, dir, size);
 	
-	if (!b.putShip(s)) {
-		throw "Can't put ship!";
+	try {
+		if (!b.putShip(s)) {
+			throw runtime_error("Can't put ship!");
+		}
+	} catch (runtime_error error) {
+		cerr << error.what();
 	}
+	
 	
 	return 0;
 }
