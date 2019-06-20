@@ -5,8 +5,8 @@ Date::Date(int y = 1, int m = 1, int d = 1) {
 }
 
 bool operator<(const Date& left, const Date& right) {
-	string s1 = left.y.to_str() + left.m.to_str() + left.d.to_str();
-	string s2 = right.y.to_str() + right.m.to_str() + right.d.to_str();
+	string s1 = left.y.to_string() + left.m.to_string() + left.d.to_string();
+	string s2 = right.y.to_string() + right.m.to_string() + right.d.to_string();
 	return (s1 < s2);
 }
 
