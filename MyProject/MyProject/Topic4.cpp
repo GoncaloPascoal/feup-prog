@@ -1,4 +1,5 @@
 #include "Topic4.h"
+#include "Utils.h"
 #include <iostream>
 #include <algorithm>
 #include <fstream>
@@ -415,7 +416,11 @@ void Topic4::removeDuplicates(vector<int> &v) {
 }
 
 vector<int> Topic4::vectorUnion(const vector<int> &v1, const vector<int> &v2) {
-	vector<int> result;
+	vector<int> result(v1);
+	result.insert(result.end(), v2.begin(), v2.end());
+
+	removeDuplicates(result);
+	utils::quickSort(result, 0, result.size() - 1);
 
 	return result;
 }
@@ -423,7 +428,16 @@ vector<int> Topic4::vectorUnion(const vector<int> &v1, const vector<int> &v2) {
 vector<int> Topic4::vectorIntersection(const vector<int> &v1, const vector<int> &v2) {
 	vector<int> result;
 	
-	
+	for (vector<int>::const_iterator it1 = v1.begin(); it1 != v1.end(); it1++) {
+		for (vector<int>::const_iterator it2 = v2.begin(); it2 != v2.end(); it2++) {
+			if (*it1 == *it2) {
+				result.push_back(*it1);
+			}
+		}
+	}
+
+	removeDuplicates(result);
+	utils::quickSort(result, 0, result.size() - 1);
 
 	return result;
 }
